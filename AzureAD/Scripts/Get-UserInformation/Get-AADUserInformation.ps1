@@ -29,21 +29,20 @@ function Get-AADUserInformation
         Connect-AzureAD
       }
 
-      # Get user information and create and array
+      # Collect input
       Write-Host "****** This script will collect user information and devices registered by the user ******"
       $UserID = Read-Host 'Enter email or ObjectID of the user'
-     
+      
+      # Get user information and select objects
       Write-Host "***** User information *****" 
       Get-AzureADUser -ObjectID $UserID | Select-Object Displayname,UserPrincipalName,AccountEnabled,ObjectID,Mail,Department,JobTitle,PhysicalDeliveryOfficeName
-      
+
+      # Get user device information
       Write-Host "***** User devices *****"
       Get-AzureADUserRegisteredDevice -ObjectId $UserID | Select-Object DisplayName,AccountEnabled,DeviceID,ApproximateLastLogonTimeStamp,DeviceOSType,DeviceOSVersion,DeviceTrustType,IsManaged
-      
+
+      # Get user group memberships
       Write-Host "***** User group memberships *****"
       Get-AzureADUserMembership -ObjectId $UserID | Select-Object DisplayName,ObjectID,Description,MailEnabled,Mail
 
-
-      
-     # Write-Host $AADUserInfo
-     # Write-Host $AADUserGroups
 }

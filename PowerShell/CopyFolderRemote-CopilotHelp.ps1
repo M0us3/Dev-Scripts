@@ -1,3 +1,5 @@
+# Tested using co-pilot to write the base code and I then modified the code to fit my needs
+
 function Copy-FolderToComputers {
     param (
         [string]$computerListPath,

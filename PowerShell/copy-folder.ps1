@@ -1,7 +1,7 @@
 function copy-folder {
     param (
       $computers = (Get-Content -Path "$home\Documents\Devicelist.txt"),
-      $path = "c$\illumina-supports",
+      $path = "c$\Tech-Support",
       $OutPutCSV = "$home\Documents\FolderCheck.csv",
       $Result = @()
     )
